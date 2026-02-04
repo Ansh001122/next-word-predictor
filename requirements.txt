@@ -1,8 +1,8 @@
 
 streamlit>=1.26.0
 keras==3.2.0
-jax==0.4.24
-jaxlib==0.4.24
+jax
+jaxlib
 numpy==1.26.4
 pandas
 nltk
