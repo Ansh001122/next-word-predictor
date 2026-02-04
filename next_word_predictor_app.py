@@ -5,9 +5,9 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import streamlit as st
 import numpy as np
-from keras import models, layers
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from keras import models, layers, utils
+from keras.utils import text_dataset_from_directory
+from keras.utils import pad_sequences
 import nltk
 
 nltk.download("punkt", quiet=True)
