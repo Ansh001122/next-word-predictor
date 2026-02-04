@@ -1,24 +1,20 @@
 import os
-# ✅ Force Keras to use lightweight NumPy backend (no TensorFlow)
+# ✅ Use Keras Core with NumPy backend
 os.environ["KERAS_BACKEND"] = "numpy"
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
-os.environ["KERAS_BACKEND_FORCED"] = "1"
 
 import streamlit as st
 import numpy as np
-from keras.models import Sequential
-from keras.layers import Embedding, LSTM, Dense
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from keras_core.models import Sequential
+from keras_core.layers import Embedding, LSTM, Dense
+from keras_core.preprocessing.text import Tokenizer
+from keras_core.preprocessing.sequence import pad_sequences
 import nltk
 
-# Download tokenizer quietly
-nltk.download('punkt', quiet=True)
+nltk.download("punkt", quiet=True)
 
-# Streamlit setup
 st.set_page_config(page_title="Next-Word Predictor — by Ansh Raj", layout="centered")
 st.title("🧠 Next-Word Predictor — by Ansh Raj")
-st.write("Demo (fast) — predicts next word(s). This demo uses a tiny corpus so the app starts quickly for resume/demo purposes.")
+st.write("Demo (fast) — predicts next word(s). Uses a tiny corpus for quick startup on Streamlit Cloud.")
 
 @st.cache_data
 def load_corpus():
