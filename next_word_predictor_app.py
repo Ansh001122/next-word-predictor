@@ -9,7 +9,15 @@ from keras import models, layers
 import nltk
 from nltk.tokenize import word_tokenize
 
-nltk.download("punkt", quiet=True)
+# ✅ Make sure NLTK data is available on Streamlit Cloud
+nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
+
+try:
+    nltk.data.find("tokenizers/punkt")
+except LookupError:
+    nltk.download("punkt", download_dir=nltk_data_path, quiet=True)
 
 st.set_page_config(page_title="Next-Word Predictor — by Ansh Raj", layout="centered")
 st.title("🧠 Next-Word Predictor — by Ansh Raj")
