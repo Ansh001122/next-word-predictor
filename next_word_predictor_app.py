@@ -1,17 +1,20 @@
 import os
+# ✅ Use Keras with NumPy backend only (no TensorFlow)
 os.environ["KERAS_BACKEND"] = "numpy"
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import streamlit as st
 import numpy as np
-from keras import models, layers, preprocessing
+from keras import models, layers
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
 import nltk
 
 nltk.download("punkt", quiet=True)
 
 st.set_page_config(page_title="Next-Word Predictor — by Ansh Raj", layout="centered")
 st.title("🧠 Next-Word Predictor — by Ansh Raj")
-st.write("Demo (fast) — predicts next word(s). Uses a tiny corpus for quick startup on Streamlit Cloud.")
+st.write("Demo (fast) — predicts next word(s). Uses a small text corpus for quick start on Streamlit Cloud.")
 
 @st.cache_data
 def load_corpus():
