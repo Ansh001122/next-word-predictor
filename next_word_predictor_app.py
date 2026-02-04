@@ -1,13 +1,10 @@
 import os
-# ✅ Use Keras Core with NumPy backend
 os.environ["KERAS_BACKEND"] = "numpy"
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import streamlit as st
 import numpy as np
-from keras_core.models import Sequential
-from keras_core.layers import Embedding, LSTM, Dense
-from keras_core.preprocessing.text import Tokenizer
-from keras_core.preprocessing.sequence import pad_sequences
+from keras import models, layers, preprocessing
 import nltk
 
 nltk.download("punkt", quiet=True)
